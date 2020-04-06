@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :proportions, only: [:new, :create]
   end
   resources :proportions, only: [:destroy]
-  # get 'statistics', to: 'pages#statistics'
+  get 'statistics', to: 'pages#statistics'
 end
