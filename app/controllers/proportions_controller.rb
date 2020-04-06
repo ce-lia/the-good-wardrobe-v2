@@ -1,5 +1,4 @@
 class ProportionsController < ApplicationController
-  class ProportionsController < ApplicationController
 
   def new
     @product = Product.find(params[:product_id])
@@ -33,6 +32,4 @@ class ProportionsController < ApplicationController
   def proportion_params
     params.require(:proportion).permit(:percentage, :material_id)
   end
-end
-
 end
