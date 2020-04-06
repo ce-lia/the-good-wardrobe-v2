@@ -1,0 +1,39 @@
+.btn {
+  color: #fff;
+  background-color: #2D979E;
+  border: #2D979E;
+  border-radius: 5px;
+  &:hover{
+    color: #fff;
+    background-color: #322945;
+    border: #322945;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+
+}
+
+a {
+  color: $blue-sea!important;
+  &:hover{
+    color:$aubergine!important;
+  }
+}
+
+.footer-links a {
+  color: #fff!important;
+  &:hover{
+    color:#fff!important;
+  }
+}
+
+.navbar a {
+  color: $aubergine!important;
+  &:hover{
+    color:$blue-sea!important;
+  }
+}
+
+

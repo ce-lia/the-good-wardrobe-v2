@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newProportionForm = document.getElementById('new_proportion');
+  newProportionForm.innerHTML = innerHTML;
+}
+
+function addProportion(proportionHTML) {
+  const proportions = document.getElementById('proportions');
+  proportions.insertAdjacentHTML('beforeend', proportionHTML);
+}
+
+<% if @proportion.errors.any? %>
+  refreshForm('<%= j render "proportions/form", product: @product, proportion: @proportion %>');
+<% else %>
+  addProportion('<%= j render "proportions/show", proportion: @proportion %>');
+  refreshForm('<%= j render "proportions/form", product: @product, proportion: Proportion.new %>');
+<% end %>

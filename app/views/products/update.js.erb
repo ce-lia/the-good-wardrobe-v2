@@ -1,0 +1,7 @@
+function refreshStatus(innerHTML) {
+  const changeStatus = document.querySelector("[data-product-id='<%= @product.id %>']");
+  changeStatus.innerHTML = innerHTML;
+}
+
+refreshStatus('<%= j render "products/status", product: @product %>');
+

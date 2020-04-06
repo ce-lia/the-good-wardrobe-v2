@@ -2,11 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = current_user.products.all
   end
 
   def show
-    # @proportion = Proportion.new
+    @proportion = Proportion.new
   end
 
   def new
@@ -25,19 +25,19 @@ class ProductsController < ApplicationController
 
   def edit; end
 
-  # def update
-  #   if @product.update(product_params)
-  #     respond_to do |format|
-  #       format.html { redirect_to products_path }
-  #       format.js
-  #     end
-  #     else
-  #       respond_to do |format|
-  #         format.html { render :edit }
-  #         format.js
-  #       end
-  #   end
-  # end
+  def update
+    if @product.update(product_params)
+      respond_to do |format|
+        format.html { redirect_to products_path }
+        format.js
+      end
+      else
+        respond_to do |format|
+          format.html { render :edit }
+          format.js
+        end
+    end
+  end
 
   def destroy
     @product.destroy

@@ -1,1 +1,70 @@
 // Specific CSS for your home-page
+body {
+  background-color: #fff;
+}
+
+
+.container-home{
+  position: relative;
+  background-image: asset-url('bg-home.jpg');
+  height: 770px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center fixed;
+}
+
+.container{
+  width: 600px;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  top: 50px;
+}
+
+.container-home a, .container-home label {
+  color: #fff
+}
+
+.container-home label:nth-child(1) {
+  display: none;
+}
+
+.container-home .form-check {
+  float: right;
+}
+
+#welcome .container {
+  color:white;
+  background-color:rgba(0, 0, 0, 0.4);
+}
+
+#user_email, #user_password{
+  padding: 2px 10px 2px 10px;
+  background-color: rgba(255, 255, 255, 0.6)!important;
+  border-radius: 5px;
+}
+
+#new_user {
+  width: 50%;
+  margin: auto;
+}
+
+.login {
+  border-radius: 35px!important;
+}
+
+.bloc-p {
+  display: inline-block;
+  width: 48%;
+  vertical-align: top;
+  text-align: justify;
+}
+
+.bloc-p-right{
+  float: right;
+}
+
+.-container .title {
+  text-align: center
+}

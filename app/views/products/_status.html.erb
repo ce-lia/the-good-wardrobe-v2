@@ -1,0 +1,13 @@
+<div class="dropdown" id="status" data-product-id=<%= product.id %>>
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= product.status %>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% Product.statuses.each_key do |name| %>
+      <%= simple_form_for(product, remote: true) do |f| %>
+       <%= f.input :status, as: :hidden, input_html: {value: name} %>
+       <%= f.button :submit, name, id: "change_status" %>
+      <% end  %>
+    <% end %>
+  </div>
+</div>

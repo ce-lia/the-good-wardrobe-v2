@@ -1,1 +1,46 @@
-<%= Product.all %>
+<div class="container-wardrobe">
+<h1 class="title-index">My Wardrobe</h1>
+<!-- <p class="add-product"><%= link_to "New Product", new_product_path(@product), class: "btn btn-primary new-prod" %></p> -->
+<p class="add-product">
+<%= link_to new_product_path(@product), class: "btn btn-primary new-prod" do %>
+  <i class="material-icons">add</i>
+<% end %>
+</p>
+
+<div class="card-all">
+  <% @products.each do |product| %>
+    <div class="card-trip">
+      <%if product.photo.attached? %>
+        <div class="img-card">
+          <!-- <span class="tag">status</span> -->
+          <%= render "products/status", product: product  %>
+          <%= link_to product_path(product) do %>
+            <%=cl_image_tag product.photo.key%>
+          <% end %>
+        </div>
+        <%else%>
+        <div class="img-card">
+          <!-- <span class="tag">status</span> -->
+          <%= render "products/status", product: product  %>
+          <%= link_to product_path(product) do %>
+            <%= cl_image_tag("https://res.cloudinary.com/dzkeel2d5/image/upload/w_400/v1586167510/default-product.png") %>
+          <% end %>
+        </div>
+      <%end%>
+      <div class="card-trip-infos">
+        <div>
+          <%= link_to product_path(product) do %>
+            <h3 class="title-product"><%=product.title%></h3>
+          <% end %>
+          <%if product.description.length >= 140 %>
+            <p><%=product.description.first(140)%>...</p>
+          <%else%>
+            <p><%=product.description%></p>
+          <%end%>
+        </div>
+        <!-- <p class="card-trip-pricing"><%= link_to "See more", product_path(product) %></p> -->
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

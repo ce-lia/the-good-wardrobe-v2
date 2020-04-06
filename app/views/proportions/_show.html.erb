@@ -1,0 +1,9 @@
+<div data-proportion-id=<%= proportion.id %>>
+  <li> <%=proportion.percentage%>% <%=proportion.material.name%></li>
+  <%= link_to "delete",
+        proportion_path(proportion),
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        remote: true,
+        class: "delete-button" %>
+</div>

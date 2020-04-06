@@ -1,20 +1,31 @@
-<h2>Log in</h2>
+<div class="container-home">
+  <div class="container">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div>
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    placeholder: "Email" %>
+        <%= f.input :password,
+                    required: false,
+                    placeholder: "Password" %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= f.button :submit, "Log in", class: "login" %>
+    </div>
+    <div>
+      <%= render "devise/shared/links" %>
+    </div>
+    <% end %>
+
+    <div id="welcome">
+      <div class="container -container">
+       <div class="title">
+        <h4>Welcome to The Good Wardrobe</h4>
+       </div>
+        <p class="bloc-p">Fashion is known for its negative social and environemental impact. Carbon emissions, high usage of pesticides and chemicals, bad conditions for factory workers... The most efficient way to reduce your impact is to rethink the way you buy, wear, and get rid of your clothes.</p>
+        <p class="bloc-p bloc-p-right">The Good Wardrobe helps you track your purchases and display statistics to help you make better choices & take better care of the clothes you already own. You can not manage what don't measure, so log-in and start measuring your wardrobe !</p>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
