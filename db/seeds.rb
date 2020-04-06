@@ -36,9 +36,10 @@ puts "Creating our products..."
     title:Faker::Commerce.product_name,
     description:Faker::Lorem.sentence(word_count: 10),
     brand:Faker::Kpop.solo,
-    second_hand:[true,false].sample,
+    second_hand:([true,false].sample),
     category: category.sample,
     origin:countries.sample,
+    status: 1,
     user: celia,
     purchase_date:Faker::Date.between(from: 3.years.ago, to: 2.years.ago),
     discard_date:Faker::Date.between(from: 2.years.ago, to: Date.today)
