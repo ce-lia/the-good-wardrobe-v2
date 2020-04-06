@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   has_many :proportions, dependent: :destroy
   has_many :materials, through: :proportions
   validates :description, presence: true, length: { minimum: 10 }
-  validates :second_hand, presence: true
+  validates_inclusion_of :second_hand, in: [true, false]
   validates :title, presence: true
   validates :status, presence: true
   validates :category, presence: true
