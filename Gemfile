@@ -22,6 +22,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'chartkick'
 gem 'groupdate'
 gem 'merit'
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
