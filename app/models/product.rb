@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
 
+  has_one_attached :photo
   has_many :proportions, dependent: :destroy
   has_many :materials, through: :proportions
   validates :description, presence: true, length: { minimum: 10 }
