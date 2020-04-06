@@ -1,0 +1,137 @@
+<div class="container-show">
+  <!--   <h1>Produit : <%= @product.title %></h1> -->
+<div class="big-container-show">
+ <div class="container-left">
+  <div class="img-show">
+    <%if @product.photo.attached? %>
+    <!-- <span class="tag">status</span> -->
+    <!--<span class="tag"><%= link_to "Edit ", edit_product_path(@product) %></span>-->
+     <div class="fixed-action-btn horizontal click-to-toggle spin-close">
+        <a class="btn-floating btn-large bg-blue-sea">
+          <i class="material-icons">edit</i>
+        </a>
+        <ul>
+          <li>
+            <%= link_to product_path(@product),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class: "btn-floating delete-show" do%>
+                  <i class="material-icons">delete</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_product_path(@product), class: "btn-floating tag darken-1" do %>
+              <i class="material-icons">mode_edit</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path, class: "btn-floating back" do %>
+              <i class="material-icons">home</i>,
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+    <%= cl_image_tag @product.photo.key, class: "materialboxed" %>
+    <%else%>
+    <div class="fixed-action-btn horizontal click-to-toggle spin-close">
+        <a class="btn-floating btn-large bg-blue-sea">
+          <i class="material-icons">edit</i>
+        </a>
+        <ul>
+          <li>
+            <%= link_to product_path(@product),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class: "btn-floating delete-show" do%>
+                  <i class="material-icons">delete</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_product_path(@product), class: "btn-floating tag darken-1" do %>
+              <i class="material-icons">mode_edit</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path, class: "btn-floating back" do %>
+              <i class="material-icons">home</i>,
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+    <%= cl_image_tag("default-image_m00t8o.jpg", class: "materialboxed") %>
+    <%end%>
+  </div>
+</div>
+  <div class="text-show">
+    <!-- title -->
+    <span class="main-title-product"><%= @product.title %></span>
+
+    <!-- description-->
+    <p><%= @product.description%></p>
+
+    <!--second hand-->
+    <div>
+      <% if @product.second_hand == true %>
+          <span class="title-details">I bought it</span>
+          <span>Second hand</span>
+        <% else %>
+          <span class="title-details">I bought it</span>
+          <span>New</span>
+      <%end %>
+    </div>
+
+    <!--category-->
+    <div class="details-pdt">
+      <% unless @product.category == nil %>
+        <span class="title-details">Category</span>
+        <span> <%= @product.category%></span>
+      <% else %>
+        <span class="missing"> *You should add one category in page edit </span>
+      <% end  %>
+    </div>
+
+    <!--brand-->
+    <div class="details-pdt">
+      <% unless @product.brand == nil %>
+        <span class="title-details">Brand</span>
+        <span><%= @product.brand%></span>
+      <% else %>
+        <span class="missing"> *You should add the brand in page edit </span>
+      <%end %>
+    </div>
+
+    <!--made in-->
+    <div class="details-pdt">
+      <% unless @product.origin == "" %>
+        <span class="title-details">Made in</span>
+        <span><%= @product.origin %></span>
+      <% else %>
+        <span class="missing"> *You should add the origin in page edit </>
+      <% end %>
+    </div>
+
+
+    <!--composition-->
+    <div>
+      <ul id="proportions">
+        <% @product.proportions.each do |proportion| %>
+        <%= render "proportions/show", proportion: proportion  %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="add-proportion">
+      <span class="title-details">Composition</span>
+      <%= render "proportions/form", proportion: @proportion, product: @product  %>
+    </div>
+
+
+      </div>
+    </div>
+    <div>
+  </div>
+
+
+</div>
+</div>
+

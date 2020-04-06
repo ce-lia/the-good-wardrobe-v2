@@ -1,0 +1,5 @@
+  <%= simple_form_for [@product, @proportion, remote: true] do |f| %>
+  <%= f.association :material, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+  <%= f.input :percentage %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

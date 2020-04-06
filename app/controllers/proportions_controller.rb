@@ -10,22 +10,22 @@ class ProportionsController < ApplicationController
     @proportion = Proportion.new(proportion_params)
     @product = Product.find(params[:product_id])
     @proportion.product = @product
-    if @proportion.save
-      redirect_to product_path(@product)
-    else
-      render "products/show"
-    end
     # if @proportion.save
-    #   respond_to do |format|
-    #     format.html { redirect_to product_path(@product) }
-    #     format.js
-    #   end
-    #   else
-    #     respond_to do |format|
-    #       format.html { render 'products/show' }
-    #       format.js
-    #     end
+    #   redirect_to product_path(@product)
+    # else
+    #   render "products/show"
     # end
+    if @proportion.save
+      respond_to do |format|
+        format.html { redirect_to product_path(@product) }
+        format.js
+      end
+      else
+        respond_to do |format|
+          format.html { render 'products/show' }
+          format.js
+        end
+    end
   end
 
    def destroy
