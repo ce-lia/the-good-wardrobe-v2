@@ -15,18 +15,29 @@ puts "Creating our users..."
 
 puts "Creating our materials..."
 
-cotton = Material.create!(name: 'cotton', organic:false, recycled:false)
-organic_cotton = Material.create!(name: 'organic cotton', organic:true, recycled:false)
-recycled_cotton = Material.create!(name: 'recycled cotton', organic:false, recycled:true)
-hemp = Material.create!(name: 'hemp', organic:false, recycled:false)
-organic_hemp = Material.create!(name: 'organic hemp', organic:true, recycled:false)
-recylced_hemp = Material.create!(name: 'recycled hemp', organic:false, recycled:true)
-nylon = Material.create!(name: 'nylon', organic:false, recycled:false)
-recycled_nylon = Material.create!(name: 'reycled nylon', organic:false, recycled:true)
-polyester = Material.create!(name: 'polyester', organic:false, recycled:false)
-recycled_polyester = Material.create!(name: 'recycled polyester', organic:false, recycled:true)
-lyocell = Material.create!(name: 'lyocell')
-rayon = Material.create!(name: 'rayon')
+acrylic = Material.create!(name: 'Acrylic', organic:false, recycled:false)
+elastane = Material.create!(name: 'Elastane', organic:false, recycled:false)
+polyamide = Material.create!(name: 'Polyamide', organic:false, recycled:false)
+polyester = Material.create!(name: 'Polyester', organic:false, recycled:false)
+recycled_polyester = Material.create!(name: 'Recycled polyester', organic:false, recycled:true)
+cotton = Material.create!(name: 'Cotton', organic:false, recycled:false)
+organic_cotton = Material.create!(name: 'Organic cotton', organic:true, recycled:false)
+recycled_cotton = Material.create!(name: 'Recycled cotton', organic:false, recycled:true)
+hemp = Material.create!(name: 'Hemp', organic:false, recycled:false)
+organic_hemp = Material.create!(name: 'Organic hemp', organic:true, recycled:false)
+recycled_hemp = Material.create!(name: 'Recycled hemp', organic:false, recycled:true)
+linen = Material.create!(name: 'Linen', organic:false, recycled:false)
+organic_linen = Material.create!(name: 'Organic linen', organic:true, recycled:false)
+recycleed_linen = Material.create!(name: 'Recycled linen', organic:false, recycled:true)
+wool = Material.create!(name: 'Wool', organic:false, recycled:false)
+organic_wool = Material.create!(name: 'Organic wool', organic:true, recycled:false)
+recycleed_wool = Material.create!(name: 'Recycled wool', organic:false, recycled:true)
+silk = Material.create!(name: 'Silk', organic:false, recycled:false)
+organic_silk = Material.create!(name: 'Organic silk', organic:true, recycled:false)
+recycled_silk = Material.create!(name: 'Recycled silk', organic:false, recycled:true)
+viscose = Material.create!(name: 'Viscose', organic:false, recycled:false)
+lyocell_tencell = Material.create!(name: 'Lyocell / Tencell', organic:false, recycled:false)
+
 
 
 puts "Creating our products..."
