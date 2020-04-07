@@ -34,7 +34,7 @@
     <%= pie_chart @status_hash, height: "200px" %>
   </div>
       <h4>Average time spent in your wardrobe</h4>
-        <%= @lifetime %>
+        <%= bar_chart @products.group(:category).sum(@lifetime),xtitle: "Years",label: "Years" %>
        <h4>Where were your clothes made ?</h4>
       <%= geo_chart @products.group(:origin).count %>
 </div>
