@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to products_path }
         format.js
       end
-      else
+    else
         respond_to do |format|
           format.html { render :edit }
           format.js
@@ -45,6 +45,14 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  # def change_discard_date
+  #   discarded_statuses = [6, 7, 8, 9]
+  #   if discarded_statuses.include?(@product.status)
+  #     @product.discard_date = Date.today
+  #     @product.save
+  #   end
+  # end
 
   def set_product
     @product = Product.find(params[:id])

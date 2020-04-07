@@ -1,11 +1,8 @@
 <div class="container-show">
-  <!--   <h1>Produit : <%= @product.title %></h1> -->
 <div class="big-container-show">
  <div class="container-left">
   <div class="img-show">
     <%if @product.photo.attached? %>
-    <!-- <span class="tag">status</span> -->
-    <!--<span class="tag"><%= link_to "Edit ", edit_product_path(@product) %></span>-->
      <div class="fixed-action-btn horizontal click-to-toggle spin-close">
         <a class="btn-floating btn-large bg-blue-sea">
           <i class="material-icons">edit</i>
@@ -110,7 +107,7 @@
       <% end %>
     </div>
 
-
+<%= raise %>
     <!--composition-->
     <div>
       <ul id="proportions">
