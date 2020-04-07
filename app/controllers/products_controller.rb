@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  after_action :change_discard_date, only: [:update]
 
   def index
     @products = current_user.products.all.order(:status)
@@ -46,13 +47,16 @@ class ProductsController < ApplicationController
 
   private
 
-  # def change_discard_date
-  #   discarded_statuses = [6, 7, 8, 9]
-  #   if discarded_statuses.include?(@product.status)
-  #     @product.discard_date = Date.today
-  #     @product.save
-  #   end
-  # end
+  def change_discard_date
+    discarded_statuses = ["sold", "recycled", "donated", "thrown away"]
+    if discarded_statuses.include?(@product.status)
+      @product.discard_date = Date.today
+      @product.save
+    else
+      @product.discard_date = nil
+      @product.save
+    end
+  end
 
   def set_product
     @product = Product.find(params[:id])
