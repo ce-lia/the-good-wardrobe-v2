@@ -12,8 +12,10 @@ class User < ApplicationRecord
     average_lifetime = 0
     if products.count > 0
       products.each do |product|
-        if product.discard_date != nil
-        lifetime += product.discard_date - product.purchase_date
+        if product.discard_date != nil && product.purchase_date != nil
+        lifetime += (product.discard_date - product.purchase_date)
+        elsif product.discard_date != nil && product.purchase_date == nil
+        lifetime += (product.discard_date - product.created_at)
         end
       end
       average_lifetime = ((lifetime / products.count) / 365 )* 12
