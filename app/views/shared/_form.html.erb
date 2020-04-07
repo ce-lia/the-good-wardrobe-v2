@@ -3,13 +3,13 @@
     <div class="col-xs-12 col-sm-12 col-sm-offset-12">
 
 <%= simple_form_for @product do |f| %>
-  <%= f.input :title, label: "Titre", placeholder: 'red dress', error: 'Title is mandatory, please specify one' %>
-  <%= f.input :description, label: "Description", placeholder: 'this is a red dress is totally brand new', error: 'Please enter a short description' %>
+  <%= f.input :title, label: "Title", placeholder: 'White shirt', error: 'Title is mandatory, please specify one' %>
+  <%= f.input :description, label: "Description", placeholder: 'Describe your item, where you bought it, what it reminds you of', error: 'Please enter a short description' %>
   <%= f.input :second_hand %>
   <%= f.input :purchase_date, label: "Purchase date", placeholder: 'AAAA/MM/DD' %>
-  <%= f.input :brand, label: "Brand", placeholder: 'Dior, H&M...'%>
+  <%= f.input :brand, label: "Brand", placeholder: 'H&M, HundHund...'%>
   <%= f.input :origin, label: "Made in", :collection => ["China", "Bangladesh", "Italy", "Turkey", "India", "Tunisia", "Vietnam", "Portugal", "Autre"], placeholderder: 'China, India...'%>
-  <%= f.input :category, label: "Category", :collection => ["Dress", "Jeans", "Shirt", "Pants", "Skirt", "T-shirt", "Sweatshirt", "Coat", "Jacket"] %>
+  <%= f.input :category, label: "Category", :collection => ["Dress", "Jeans", "Shirt", "Pants", "Skirt", "T-shirt", "Sweatshirt", "Pullover", "Coat", "Jacket"] %>
   <%= f.input :photo, as: :file %>
   <% if @product.category.blank? %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
