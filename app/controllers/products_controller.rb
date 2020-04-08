@@ -10,8 +10,11 @@ class ProductsController < ApplicationController
         @products = Product.where(status: in_my_wardrobe_statuses).order(:status)
       elsif params[:search][:filter].join == "Discarded clothes"
         @products = Product.where(status: discarded).order(:status)
-      elsif params[:search][:filter].include?("My wardrobe today") &&  params[:search][:filter].include?("Discarded clothes")
+      elsif (params[:search][:filter].include?("My wardrobe today") && params[:search][:filter].include?("Discarded clothes")) || params[:search][:filter].include?("")
         @products = current_user.products.all.order(:status)
+      end
+      respond_to do |format|
+        format.js { render 'index'}
       end
     else
       @products = current_user.products.all.order(:status)
