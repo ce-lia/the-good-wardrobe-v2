@@ -13,11 +13,12 @@ class ProductsController < ApplicationController
       elsif (params[:search][:filter].include?("My wardrobe today") && params[:search][:filter].include?("Discarded clothes")) || params[:search][:filter].include?("")
         @products = current_user.products.all.order(:status)
       end
-      respond_to do |format|
-        format.js { render 'index'}
-      end
     else
       @products = current_user.products.all.order(:status)
+    end
+    respond_to do |format|
+    format.html
+    format.js
     end
   end
 
