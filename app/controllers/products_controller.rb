@@ -4,14 +4,17 @@ class ProductsController < ApplicationController
 
   def index
     in_my_wardrobe_statuses = ["in my wardrobe", "to sell", "to donate", "to recycle", "to throw away"]
+    discarded = ["sold", "donated", "recycled", "thrown away"]
     if params[:search].present?
-      if params[:search]["all"] == "all"
-        @products = current_user.products.all.order(:status)
-      elsif params[:search]["all"] == "wardrobe"
+      if params[:search][:filter].join == "My wardrobe today"
         @products = Product.where(status: in_my_wardrobe_statuses).order(:status)
+      elsif params[:search][:filter].join == "Discarded clothes"
+        @products = Product.where(status: discarded).order(:status)
+      elsif params[:search][:filter].include?("My wardrobe today") &&  params[:search][:filter].include?("Discarded clothes")
+        @products = current_user.products.all.order(:status)
       end
     else
-      @products = Product.where(status: in_my_wardrobe_statuses).order(:status)
+      @products = current_user.products.all.order(:status)
     end
   end
 
