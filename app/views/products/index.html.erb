@@ -1,42 +1,16 @@
 <div class="container-wardrobe">
-<h1 class="title-index">My Wardrobe</h1>
-<p class="add-product">
-<%= link_to new_product_path(@product), class: "btn btn-primary new-prod" do %>
-  <i class="material-icons">add</i>
-<% end %>
-</p>
-
-<div class="card-all">
-  <% @products.each do |product| %>
-    <div class="card-trip">
-      <%if product.photo.attached? %>
-        <div class="img-card">
-          <%= render "products/status", product: product  %>
-          <%= link_to product_path(product) do %>
-            <%=cl_image_tag product.photo.key%>
-          <% end %>
-        </div>
-        <%else%>
-        <div class="img-card">
-          <%= render "products/status", product: product  %>
-          <%= link_to product_path(product) do %>
-            <%= cl_image_tag("https://res.cloudinary.com/dzkeel2d5/image/upload/w_400/v1586167510/default-product.png") %>
-          <% end %>
-        </div>
-      <%end%>
-      <div class="card-trip-infos">
-        <div>
-          <%= link_to product_path(product) do %>
-            <h3 class="title-product"><%=product.title%></h3>
-          <% end %>
-          <%if product.description.length >= 140 %>
-            <p><%=product.description.first(140)%>...</p>
-          <%else%>
-            <p><%=product.description%></p>
-          <%end%>
-        </div>
-      </div>
-    </div>
+  <h1 class="title-index">My Wardrobe</h1>
+  <p class="add-product">
+    <%= link_to new_product_path(@product), class: "btn btn-primary new-prod" do %>
+      <i class="material-icons">add</i>
+    <% end %>
+  </p>
+<div>
+  <%= simple_form_for :search, url: root_path, method: "GET", remote: true do |f| %>
+  <%= f.input :filter, label:"Show", collection: ["My wardrobe today", "Discarded clothes"], as: :check_boxes %>
   <% end %>
 </div>
+
+
+    <%= render 'product', products: @products %>
 </div>

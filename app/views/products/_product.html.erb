@@ -1,0 +1,33 @@
+<div class="card-all" id="products">
+  <% products.each do |product| %>
+    <div class="card-trip">
+        <%if product.photo.attached? %>
+          <div class="img-card">
+            <%= render "products/status", product: product  %>
+            <%= link_to product_path(product) do %>
+              <%=cl_image_tag product.photo.key%>
+            <% end %>
+          </div>
+        <%else%>
+          <div class="img-card">
+            <%= render "products/status", product: product  %>
+            <%= link_to product_path(product) do %>
+              <%= cl_image_tag("https://res.cloudinary.com/dzkeel2d5/image/upload/w_400/v1586167510/default-product.png") %>
+            <% end %>
+          </div>
+        <%end%>
+        <div class="card-trip-infos">
+          <div>
+            <%= link_to product_path(product) do %>
+              <h3 class="title-product"><%=product.title%></h3>
+            <% end %>
+            <%if product.description.length >= 140 %>
+              <p><%=product.description.first(140)%>...</p>
+            <%else%>
+              <p><%=product.description%></p>
+            <%end%>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>

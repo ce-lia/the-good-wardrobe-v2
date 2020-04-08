@@ -3,7 +3,23 @@ class ProductsController < ApplicationController
   after_action :change_discard_date, only: [:update]
 
   def index
-    @products = current_user.products.all.order(:status)
+    in_my_wardrobe_statuses = ["in my wardrobe", "to sell", "to donate", "to recycle", "to throw away"]
+    discarded = ["sold", "donated", "recycled", "thrown away"]
+    if params[:search].present?
+      if params[:search][:filter].join == "My wardrobe today"
+        @products = Product.where(status: in_my_wardrobe_statuses).order(:status)
+      elsif params[:search][:filter].join == "Discarded clothes"
+        @products = Product.where(status: discarded).order(:status)
+      elsif (params[:search][:filter].include?("My wardrobe today") && params[:search][:filter].include?("Discarded clothes")) || params[:search][:filter].include?("")
+        @products = current_user.products.all.order(:status)
+      end
+    else
+      @products = current_user.products.all.order(:status)
+    end
+    respond_to do |format|
+    format.html
+    format.js
+    end
   end
 
   def show
