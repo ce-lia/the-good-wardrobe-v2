@@ -8,26 +8,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def products_lifetime
-    discarded_statuses = ["sold", "recycled", "donated", "thrown away"]
-    discarded_clothes = []
     lifetime = 0
     average_lifetime = 0
       if products.count > 0
         products.each do |product|
-          if discarded_statuses.include?(product.status)
-            discarded_clothes << product
-          end
-        end
-        discarded_clothes.each do |discarded|
-          if discarded.purchase_date != nil
-            lifetime += (discarded.discard_date - discarded.purchase_date)
+          if product.discard_date == nil
+            lifetime += (Date.today - product.purchase_date)
           else
-            lifetime += (discarded.discard_date - discarded.created_at.to_date)
+            lifetime += (product.discard_date - product.purchase_date)
           end
         end
-        average_lifetime = ((lifetime / discarded_clothes.count) / 365 )* 12
+        average_lifetime = (lifetime.to_f / products.count) / 365
       end
-    average_lifetime
+    average_lifetime.round(1)
   end
 
   def second_hand_percentage
