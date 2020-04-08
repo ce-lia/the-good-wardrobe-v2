@@ -7,7 +7,7 @@
 </p>
 
 <%= simple_form_for :search, url: root_path, method: "GET" do |f| %>
-  <%= f.input :sorted, label: "Show", collection:["Only in my wardrobe", "All my clothes"], as: :check_boxes %>
+<%= f.input :all, label:"Show all of my clothes (discarded as well)", as: :boolean, checked_value: "all", unchecked_value: "wardrobe" %>
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
 
