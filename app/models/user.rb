@@ -12,19 +12,15 @@ class User < ApplicationRecord
     average_lifetime = 0
       if products.count > 0
         products.each do |product|
-          if product.discard_date != nil && product.purchase_date != nil
-            lifetime += (product.discard_date - product.purchase_date)
-          elsif product.discard_date == nil && product.purchase_date != nil
+          if product.discard_date == nil
             lifetime += (Date.today - product.purchase_date)
-          elsif product.discard_date != nil && product.purchase_date == nil
-            lifetime += (product.discard_date - product.created_at.to_date)
-          elsif product.discard_date == nil && product.purchase_date == nil
-            lifetime += (Date.today - product.created_at.to_date)
+          else
+            lifetime += (product.discard_date - product.purchase_date)
           end
         end
-        average_lifetime = (lifetime / products.count.to_f) / 365
+        average_lifetime = (lifetime.to_f / products.count) / 365
       end
-    average_lifetime
+    average_lifetime.round(1)
   end
 
   def second_hand_percentage
