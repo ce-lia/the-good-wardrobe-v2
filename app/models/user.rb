@@ -29,8 +29,9 @@ class User < ApplicationRecord
 
   def organic_recycled_materials
     @composition_hash = Hash.new
+    status_in_wardrobe = ["inmy wardrobe", "to sell", "to donate", "to recycle"]
     self.products.each do |product|
-      if product.second_hand != true
+      if product.second_hand != true && status_in_wardrobe.include?(product.status)
           product.proportions.each do |proportion|
           @composition_hash[proportion.material.name] =+ proportion.percentage
           end
