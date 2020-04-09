@@ -52,7 +52,11 @@
   }
 }
 
-.card-all {
+.filter {
+  display: inline-block;
+}
+
+#products {
   display: flex;
   flex-wrap: wrap;
   margin: auto;

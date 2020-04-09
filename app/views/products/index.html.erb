@@ -1,16 +1,20 @@
 <div class="container-wardrobe">
   <h1 class="title-index">My Wardrobe</h1>
+   <%= simple_form_for :search, url: root_path, method: "GET", remote: true do |f| %>
+  <%= f.input :filter, collection: ["My wardrobe today", "Discarded clothes"], as: :check_boxes %>
+  <% end %>
+
   <p class="add-product">
     <%= link_to new_product_path(@product), class: "btn btn-primary new-prod" do %>
       <i class="material-icons">add</i>
     <% end %>
   </p>
-<div>
-  <%= simple_form_for :search, url: root_path, method: "GET", remote: true do |f| %>
-  <%= f.input :filter, label:"Show", collection: ["My wardrobe today", "Discarded clothes"], as: :check_boxes %>
-  <% end %>
-</div>
 
 
-    <%= render 'product', products: @products %>
+
+  <div class="card-all">
+    <div id="products">
+      <%= render 'product', products: @products %>
+    </div>
+  </div>
 </div>
