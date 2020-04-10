@@ -46,11 +46,11 @@ class PagesController < ApplicationController
           else
             bought_new << product
           end
+          monthly_produt_list << product
         end
         @global_thrift_hash[date] = ((second_hand.count.to_f / (second_hand.count + bought_new.count).to_f) * 100).round(1)
       end
       date = date + 1.month
     end
-    @global_thrift_hash
   end
 end

@@ -36,8 +36,7 @@
   </div>
 <br>
       <h4>Your behavior over time</h4>
-      <p>Thrifted clothes ratio evolution</p>
-      <%= line_chart @global_thrift_hash, label: "% of thrifted clothes", points: false %>
-       <h4>Where were your clothes made ?</h4>
+      <%= line_chart @global_thrift_hash, label: "% of thrifted clothes", points: false, title: "Thrifted clothes ratio evolution" %>
+      <h4>Where were your clothes made ?</h4>
       <%= geo_chart @products.group(:origin).count %>
 </div>
