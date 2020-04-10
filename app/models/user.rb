@@ -62,5 +62,4 @@ class User < ApplicationRecord
     end
     recycled.count.to_f / thrown.count.to_f
   end
-
 end
