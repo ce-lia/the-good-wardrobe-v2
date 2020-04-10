@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     statuses = ["donated","sold","thrown away","recycled"]
     in_wardrobe = ["in my wardrobe", "to sell", "to donate", "to recycle", "to throw away"]
 
+
     @composition_hash = Hash.new
     @products.each do |product|
       if product.second_hand != true
@@ -15,11 +16,9 @@ class PagesController < ApplicationController
       end
     end
 
-
     thrifted = @products.where(status: in_wardrobe).group(:second_hand).count
     labels = { true => 'Thrifted', false => 'New' }
     @thrift_hash = thrifted.transform_keys(&labels.method(:[]))
-
 
     @status_hash = Hash.new
     @products.each do |product|
