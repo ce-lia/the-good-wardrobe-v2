@@ -62,24 +62,4 @@ class User < ApplicationRecord
     end
     recycled.count.to_f / thrown.count.to_f
   end
-
-  def global_second_hand
-    date = Date.parse('2015-01-01')
-    second_hand = []
-    bought_new = []
-    until date.month == Date.today.month && date.year == Date.today.year
-      self.products.each do |product|
-        if product.purchase_date <= date && (product.discard_date == nil || product.discard_date >= date + 1.month)
-          if product.second_hand == true
-            second_hand << product
-          else
-            bought_new << product
-          end
-        end
-      end
-      date + 1.month
-    end
-    second_hand.count.to_f / (second_hand.count + bought_new.count).to_f
-  end
-
 end
